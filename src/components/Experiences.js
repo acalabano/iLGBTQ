@@ -10,13 +10,13 @@ import {
 } from 'react-native'
 import Item from './Item'
 
-export default class Groceries extends Component {
+export default class Experiences extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
       newItem: '',
-      text: '', 
+      text: '',
       height: 0
     }
   }

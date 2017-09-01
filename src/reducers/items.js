@@ -8,6 +8,7 @@ import {
   CONNECTION_OFFLINE
 } from '../actions/items'
 
+// import {List} from 'immutable'
 const initialState = {
   onlineList: [],
   offlineList: [],
