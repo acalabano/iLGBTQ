@@ -1,7 +1,0 @@
-// See https://firebase.google.com/docs/web/setup#project_setup
-module.exports = {
-  API_KEY: "AIzaSyDq1AKAnHg7fDW4HjsaXodjjeOSiDhEn-4",
-  AUTH_DOMAIN: "redux-react-firebase-template.firebaseapp.com",
-  DATABASE_URL: "https://redux-react-firebase-template.firebaseio.com",
-  STORAGE_BUCKET: "redux-react-firebase-template.appspot.com"
-}

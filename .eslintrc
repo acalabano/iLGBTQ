@@ -30,5 +30,8 @@
   },
   "plugins": [
     "react"
-  ]
+  ],
+    "parserOptions": {
+      "sourceType": "module",
+  }
 }
