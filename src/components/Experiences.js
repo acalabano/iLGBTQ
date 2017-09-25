@@ -6,9 +6,11 @@ import {
   Text,
   TextInput,
   View,
-  TouchableHighlight
+  TouchableHighlight,
+  Button
 } from 'react-native'
 import Item from './Item'
+import firebase from 'firebase'
 
 export default class Experiences extends Component {
   constructor(props) {
@@ -17,7 +19,9 @@ export default class Experiences extends Component {
     this.state = {
       newItem: '',
       text: '',
-      height: 0
+      height: 0,
+      currentUserId: '',
+      currentUsername:''
     }
   }
 
@@ -37,6 +41,14 @@ export default class Experiences extends Component {
     } else {
       this.props.checkConnection()
     }
+  }
+
+  componentDidMount(){
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.setState({ currentUserId: user.uid, currentUsername: user.displayName })
+      }
+    })
   }
 
   renderRow(rowData) {
@@ -62,6 +74,7 @@ export default class Experiences extends Component {
   render() {
     console.log('PROPS!')
     console.log(this.props)
+    console.log('This is the currentUsername', this.state.currentUsername)
     let items, readonlyMessage
     if (this.props.connected) {
       items = this.props.onlineItems
@@ -88,10 +101,7 @@ export default class Experiences extends Component {
                    }}
                    style={[styles.default, {height: Math.max(35, this.state.height)}]}
                    onSubmitEditing={() => this._add()} />
-        <TouchableHighlight onPress={this._add.bind(this)}>
-          <Text>Click to Submit it!</Text>
-        </TouchableHighlight>
-
+        <Button onPress={this._add.bind(this)} title= "Submit it!"/>
         <ListView
           dataSource={this.dataSource.cloneWithRows(items)}
           enableEmptySections={true}
